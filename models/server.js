@@ -21,23 +21,23 @@ class Server {
     }
     middlewares() {
         //CORS
-        this.app.use((cors));
+        this.app.use( cors() );
 
         //Lectura y parseo del body 
         this.app.use( express.json() ); 
 
         //directorio publico 
-        this.app.use(express.static('public'));
+        this.app.use( express.static('public') );
 
     }
     /*son las rutas que va a tener la app */
     routes() {
-        this.app.use(this.usuariosPath, require('../routes/usuarios'));
+        this.app.use( this.usuariosPath, require('../routes/usuarios'));
     }
 
     /* esta parte es paque este escuchando la app*/
     listen() {
-        this.app.listen(this.port, () => {
+        this.app.listen( this.port, () => {
             console.log('Servidor corriendo en puerto', this.port);
         });
     }
